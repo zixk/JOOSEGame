@@ -17,6 +17,7 @@ import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import gla.joose.birdsim.boards.FlyBehaviour;
 import gla.joose.birdsim.pieces.Bird;
 import gla.joose.birdsim.pieces.Grain;
 import gla.joose.birdsim.pieces.Piece;
@@ -43,7 +44,16 @@ public abstract class Board extends Observable implements Observer {
     protected int noofbirds;
     protected int noofgrains;
 
+    FlyBehaviour flyBehaviour;
 
+    public void setFlyBehaviour(FlyBehaviour fb) {
+    	flyBehaviour = fb;
+    }
+    
+    public void performFly() {
+    	flyBehaviour.fly(this.thisBoard);
+    }
+    
     /**
      * Creates a board with the given number of rows and columns. This
      * board is a Swing <code>JPanel</code> and may be used wherever a
@@ -105,6 +115,8 @@ public abstract class Board extends Observable implements Observer {
      * This class is overridden when a different board behaviour is preferred
      * 
      */
+    
+    /*
 	public void fly(){
 		
 		Bird bird = new Bird();
@@ -127,6 +139,8 @@ public abstract class Board extends Observable implements Observer {
 		bird.remove();
 		updateStockDisplay();
 	}
+	/ 
+
 	
 	/**
      * updates the number of birds and grains on the board.
@@ -595,4 +609,6 @@ public abstract class Board extends Observable implements Observer {
     public void setSelectedSquare(int[] selection) {
         selectedSquare = selection;
     }
+
+
 }

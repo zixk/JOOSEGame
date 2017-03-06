@@ -13,7 +13,10 @@ import javax.swing.JPanel;
 
 /**
  * A BirdSim board with generic bird flying behaviour.
+ * 
  */
+
+
 public class FlockBoard extends Board{
 
     JPanel buttonPanel;
@@ -22,6 +25,8 @@ public class FlockBoard extends Board{
     JLabel noOfBirdsLabel;
     
     Thread runningthread;
+    
+
     
 	public FlockBoard(int rows, int columns) {
 		super(rows, columns);		
@@ -43,8 +48,9 @@ public class FlockBoard extends Board{
             	scareBirds = false;
             	runningthread = new Thread(new Runnable(){
 					public void run() {
-						fly();
-					}            		
+						performFly();
+					}
+           		
             	});
             	runningthread.start();
         }}); 
@@ -54,6 +60,7 @@ public class FlockBoard extends Board{
         scareBirdsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	scareBirds = true;
+            	performFly();
         }}); 
         
         noOfBirdsLabel = new JLabel();

@@ -8,10 +8,10 @@ import gla.joose.birdsim.pieces.Piece;
 import gla.joose.birdsim.util.Distance;
 import gla.joose.birdsim.util.DistanceMgr;
 
-public class MovingForageFly {
+public class MovingForageFly implements FlyBehaviour {
 	
 	protected Random rand  = new Random();
-
+	
 	public void fly(Board board){
 			
 			Bird bird = new Bird();
